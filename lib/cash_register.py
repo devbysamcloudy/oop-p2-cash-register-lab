@@ -1,5 +1,3 @@
-
-
 class CashRegister:
     def __init__(self, discount=0):
         self.total = 0
@@ -9,12 +7,9 @@ class CashRegister:
         self.last_transaction_total = 0
 
     def add_item(self, title, price, quantity=1):
-      
         self.last_transaction_items = [title] * quantity
         self.last_transaction_total = price * quantity
-        
         self.total += self.last_transaction_total
-        
         self.items.extend(self.last_transaction_items)
 
     def apply_discount(self):
@@ -28,11 +23,8 @@ class CashRegister:
         self.total -= self.last_transaction_total
         if self.total < 0:
             self.total = 0.0
-        
         for item in self.last_transaction_items:
             if item in self.items:
                 self.items.remove(item)
-        
-        # Reset last transaction
         self.last_transaction_items = []
         self.last_transaction_total = 0.0
